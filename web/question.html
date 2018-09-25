@@ -1,0 +1,75 @@
+
+<doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Studio Photoshop</title>
+		<link rel="stylesheet" href="css/slide_normalize.css">
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/form.css">
+
+		<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+		<script src="./js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="./js/vendor/modernizr.custom.min.js"></script>
+
+</head>
+<body>
+<div class="back">
+
+	<!---header start--->
+	<header class="page-header" role="banner">
+	<div class="inner clearfix">
+		<h1 class="site-logo">Studio Photoshop</h1>
+		<nav class="primary-nav" role="navigation">
+			<ul>
+				<li><a href="top.html">top</a></li>
+				<li><a href="sample.html">sample</a></li>
+				<li><a href="price.html">price</a></li>
+				<li><a href="question.html">mail</a></li>
+				<li><a href="index.html">index</a></li>
+				<li><a href="signup.html">新規登録</a></li>
+				<li><a href="logout.php">ログアウト</a></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+	<!---header end--->
+
+
+
+<!---main start--->
+	<main id="question_form">
+		<h3>お問い合わせ</h3>
+			<form action="question.php" method="post">
+				<div>
+				お名前<br>
+				<input type="text" name="name" placeholder="名前">
+				</div>
+				<div>
+				メールアドレス<br>
+				<input type="text" name="mail">
+				</div>
+				<div>
+				お問い合わせ内容<br>
+				<textarea name="message"></textarea>
+				</div>
+				<div>
+				  <input type="submit" name="submit_add_question" value="送信">
+				</div>
+			</form>
+	</main>
+<!---main end--->
+
+
+<!---footer start--->
+<footer>
+		<p>&copy;Copyright Studio Photoshop. All rights reserved.</p>
+</footer>
+<!---footer end--->
+
+
+</div>
+</body>
+</html>

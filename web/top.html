@@ -1,0 +1,145 @@
+<?php
+session_start();
+
+function h($str) {
+	return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+if (isset($_SESSION["mail"])) {
+	echo "　　　　ようこそ",$_SESSION["mail"],"さん";
+	echo nl2br("\n");
+	echo "　　　　　　予約状況は";
+
+	//MySQLサーバに必要な値を代入
+	$host = 'localhost';
+	$username = 'root';
+	$password = '';
+	$db_name = 'studio';
+
+	//変数設定をして、サーバに接続
+	$database = mysqli_connect($host, $username, $password, $db_name);
+
+	//接続確認、未接続の場合エラー出力
+	if ($database == false){
+		die('Connect Error ('.mysqli_connect_errno(). ')'.mysqli_connect_error());
+	}
+
+	//MySQLにutf8で接続
+	$charset = 'utf8';
+	mysqli_set_charset($database, $charset);
+
+	//データ取得
+	$num = "SELECT day,time FROM date,plan,user WHERE date.id = plan.id AND plan.mail = user.mail AND user.mail = '{$_SESSION["mail"]}'";
+	$result = mysqli_query($database, $num);
+	while($row = mysqli_fetch_assoc($result)){
+		echo $row['day']. " ";
+		echo $row['time']." ";
+	}
+	echo "となっております。";
+	mysqli_close($database);
+}
+
+
+
+?>
+
+<doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Studio Photoshop</title>
+	<link rel="stylesheet" href="css/slide_normalize.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/sizuku.css">
+
+	<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+	<script src="./js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="./js/vendor/modernizr.custom.min.js"></script>
+
+	<script src="./js/slide.js"></script>
+	<script src="./js/caption.js"></script>
+	<script src="./js/sizuku.js"></script>
+
+</head>
+<body>
+<div>
+
+	<!---header start--->
+	<header class="page-header" role="banner">
+	<div class="inner clearfix">
+		<h1>Studio Photoshop</h1>
+			<nav class="primary-nav" role="navigation">
+				<li><a href="top.html">top</a></li>
+				<li><a href="sample.html">sample</a></li>
+				<li><a href="price.html">price</a></li>
+				<li><a href="question.html">mail</a></li>
+				<li><a href="index.html">index</a></li>
+				<li><a href="signup.html">新規登録</a></li>
+				<li><a href="logout.php">ログアウト</a></li>
+			</nav>
+	</div>
+	</header>
+	<!---header end--->
+
+
+	<!---main start--->
+	<main>
+	<h2 class="concept">Concept</h2>
+		<p class="concept anim-typewriter">日常と非日常の思い出を記録に。</p>
+		<p class="concept anim-typewriter">繋がりを大切にしたフォトスタジオ。</p>
+
+	<!---slide start--->
+	<div class="slideshow">
+		<div class="slideshow-slides">
+			<a href="./" class="slide" id="slide-1"><img src="images/topslide01.jpg" alt="" width="1600" height="465"></a>
+			<a href="./" class="slide" id="slide-2"><img src="images/topslide02.jpg" alt="" width="1600" height="465"></a>
+			<a href="./" class="slide" id="slide-3"><img src="images/topslide03.jpg" alt="" width="1600" height="465"></a>
+			<a href="./" class="slide" id="slide-4"><img src="images/topslide04.jpg" alt="" width="1600" height="465"></a>
+			<a href="./" class="slide" id="slide-5"><img src="images/topslide05.jpg" alt="" width="1600" height="465"></a>
+		</div>
+		<div class="slideshow-nav">
+			<a href="#" class="prev">Prev</a>
+			<a href="#" class="next">Next</a>
+		</div>
+		<div class="slideshow-indicator"></div>
+	</div>
+
+	<br>
+	<!---slide end--->
+
+
+	<!---caption start--->
+	<div id="images">
+		<!---<p class="box clearfix">--->
+			<div class="inner clearfix">
+				<table>
+					<tr>
+						<tb><a href="price.html"><img src="images/sample1.jpg" alt="sample1"><strong class="plan1">Plan1</strong><span></span></a></tb>
+						<tb><a href="price.html"><img src="images/sample3.jpg" alt="sample3"><strong class="plan2">Plan2</strong><span></span></a></tb>
+						<tb><a href="price.html"><img src="images/sample5.jpg" alt="sample5"><strong class="plan3">Plan3</strong><span></span></a></tb>
+					</tr>
+				</table>
+			</div>
+		<!---</p>--->
+	</div>
+	<!---caption end--->
+
+
+	</main>
+	<!---main end--->
+<br>
+<br>
+<br>
+<br>
+<br>
+
+	<!---footer start--->
+	<footer>
+		<p>&copy;Copyright Studio Photoshop. All rights reserved.</p>
+	</footer>
+	<!---footer end--->
+</div>
+</body>
+</html>
+

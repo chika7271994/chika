@@ -1,0 +1,176 @@
+<doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Studio Photoshop</title>
+		<link rel="stylesheet" href="css/header.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/sizuku.css">
+		<link rel="stylesheet" href="css/price.css">
+
+		<script src="./js/vendor/jquery-1.10.2.min.js"></script>
+		<script src="./js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="./js/vendor/modernizr.custom.min.js"></script>
+
+		<script src="./js/price.js"></script>
+		<script src="./js/sizuku.js"></script>
+
+</head>
+<body>
+<div class="back">
+
+
+	<!---ヘッダー--->
+	<header class="page-header" role="banner">
+	<div class="inner clearfix">
+		<h1 class="site-logo">Studio Photoshop</h1>
+		<nav class="primary-nav" role="navigation">
+			<ul>
+				<li><a href="top.html">top</a></li>
+				<li><a href="sample.html">sample</a></li>
+				<li><a href="price.html">price</a></li>
+				<li><a href="question.html">mail</a></li>
+				<li><a href="index.html">index</a></li>
+				<li><a href="signup.html">新規登録</a></li>
+				<li><a href="logout.php">ログアウト</a></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+	<!---ヘッダーここまで--->
+
+
+
+	<!---メイン--->
+	<main>
+		<div id="plan">
+			<div class="plan1">
+			<table class="plan">
+				<tr>
+					<th>プラン1</th>
+					<td>遺影撮影コース</td>
+				</tr>
+				<tr>
+					<th>撮影枚数</th>
+					<td>撮影枚数無制限</td>
+				</tr>
+				<tr>
+					<th>データ</th>
+					<td>当日データ引き渡し可能</td>
+				</tr>
+				<tr>
+					<th>撮影時間</th>
+					<td>9:00～12:00 or 13:00～16:00　の2部制</td>
+				</tr>
+				<tr>
+					<th>料金</th>
+					<td>15,000～</td>
+				</tr>
+			</table>
+			</div>
+		<br>
+			<div class="plan2">
+			<table class="plan">
+				<tr>
+					<th>プラン2</th>
+					<td>家族撮影コース</td>
+				</tr>
+				<tr>
+					<th>撮影枚数</th>
+					<td>撮影枚数無制限</td>
+				</tr>
+				<tr>
+					<th>データ</th>
+					<td>当日データ引き渡し可能</td>
+				</tr>
+				<tr>
+					<th>撮影時間</th>
+					<td>9:00～12:00 or 13:00～16:00　の2部制</td>
+				</tr>
+				<tr>
+					<th>料金</th>
+					<td>20,000～</td>
+				</tr>
+			</table>
+			</div>
+		<br>
+			<div class="plan3">
+			<table class="plan">
+				<tr>
+					<th>プラン3</th>
+					<td>1日コース</td>
+				</tr>
+				<tr>
+					<th>撮影枚数</th>
+					<td>撮影枚数無制限</td>
+				</tr>
+				<tr>
+					<th>データ</th>
+					<td>当日データ引き渡し可能</td>
+				</tr>
+				<tr>
+					<th>撮影時間</th>
+					<td>9:00～16:00</td>
+				<tr>
+					<th>料金</th>
+					<td>30,000～</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+
+		<h3 class="open">注意事項▽</h3>
+			<div id="slidebox">
+				----------------------------------<br>
+				----------------------------------<br>
+				----------------------------------<br>
+				----------------------------------<br>
+				----------------------------------<br>
+				----------------------------------<br>
+			</div>
+
+<br>
+<br>
+
+		<h3 class="open2">予約状況▽</h3>
+			<div id="slidebox2">
+				予約が入っている日程です。<br>
+				----------------------------------<br>
+				<?php
+					include("date.php");
+				?>
+				----------------------------------<br>
+			</div>
+
+<br>
+<br>
+
+			<div id="calender">
+				<div class="calenderimg">
+				<div class="mask">
+					<?php
+						include("calender.php");
+					?>
+				</div>
+				</div>
+			</div>
+
+	</main>
+	<!---メインここまで--->
+<br>
+<br>
+<br>
+<br>
+	<!---フッター--->
+	<footer>
+		<p>&copy;Copyright Studio Photoshop. All rights reserved.</p>
+	</footer>
+	<!---フッターここまで--->
+
+
+
+
+</div>
+</body>
+</html>
