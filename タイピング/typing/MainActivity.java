@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query(
                 "testdb",
-                new String[] { "items", "price" },
+                new String[] { "SELECT * FROM testdb ORDER BY RANDOM()"},
                 null,
                 null,
                 null,
@@ -51,9 +51,8 @@ public class MainActivity extends Activity {
 
         for (int i = 0; i < cursor.getCount(); i++) {
             sbuilder.append(cursor.getString(0));
-            sbuilder.append(":    ");
-            sbuilder.append(cursor.getInt(1));
-            sbuilder.append("yen\n\n");
+            sbuilder.append("");
+            sbuilder.append("\n\n");
             cursor.moveToNext();
         }
 

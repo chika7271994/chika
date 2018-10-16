@@ -16,7 +16,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     private static final String _ID = "_id";
     private static final String COLUMN_NAME_TITLE = "words";
 
-    private static final String SQL_CREATE_ENTRIES =
+    public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     _ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_TITLE + " TEXT)";
@@ -30,6 +30,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
 
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         // テーブル作成
@@ -37,11 +38,54 @@ public class TestOpenHelper extends SQLiteOpenHelper {
                 SQL_CREATE_ENTRIES
         );
 
-        saveData(db, "apple");
-        saveData(db, "orange");
-        saveData(db, "strawberry");
-        saveData(db, "melon");
-        saveData(db, "banana");
+        saveData(db, "abstract");
+        saveData(db, "assert");
+        saveData(db, "boolean");
+        saveData(db, "break");
+        saveData(db, "byte");
+        saveData(db, "case");
+        saveData(db, "catch");
+        saveData(db, "char");
+        saveData(db, "class");
+        saveData(db, "continue");
+        saveData(db, "default");
+        saveData(db, "do");
+        saveData(db, "double");
+        saveData(db, "enum");
+        saveData(db, "else");
+        saveData(db, "extends");
+        saveData(db, "final");
+        saveData(db, "finally");
+        saveData(db, "float");
+        saveData(db, "for");
+        saveData(db, "if");
+        saveData(db, "import");
+        saveData(db, "implements");
+        saveData(db, "instanceof");
+        saveData(db, "int");
+        saveData(db, "interface");
+        saveData(db, "long");
+        saveData(db, "native");
+        saveData(db, "new");
+        saveData(db, "package");
+        saveData(db, "private");
+        saveData(db, "protected");
+        saveData(db, "public");
+        saveData(db, "return");
+        saveData(db, "short");
+        saveData(db, "static");
+        saveData(db, "strictfp");
+        saveData(db, "super");
+        saveData(db, "switch");
+        saveData(db, "synchronized");
+        saveData(db, "this");
+        saveData(db, "throw");
+        saveData(db, "throws");
+        saveData(db, "transient");
+        saveData(db, "try");
+        saveData(db, "void");
+        saveData(db, "volatile");
+        saveData(db, "while");
 
     }
 
