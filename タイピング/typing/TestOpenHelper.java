@@ -16,7 +16,7 @@ public class TestOpenHelper extends SQLiteOpenHelper {
     private static final String _ID = "_id";
     private static final String COLUMN_NAME_TITLE = "words";
 
-    public static final String SQL_CREATE_ENTRIES =
+    private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
                     _ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_TITLE + " TEXT)";
@@ -29,7 +29,6 @@ public class TestOpenHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -108,4 +107,5 @@ public class TestOpenHelper extends SQLiteOpenHelper {
 
         db.insert("testdb", null, values);
     }
+
 }

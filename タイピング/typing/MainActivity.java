@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    private TestOpenHelper helper;
     private TextView textView;
+    private TestOpenHelper helper;
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -31,35 +31,36 @@ public class MainActivity extends Activity {
 
         textView = findViewById(R.id.text_view);
 
+        new Practice();
+
     }
 
-    private void readData(){
+    private void readData() {
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query(
                 "testdb",
-                new String[] { "SELECT * FROM testdb ORDER BY RANDOM()"},
+                new String[]{"words"},
                 null,
                 null,
                 null,
                 null,
-                null
+                "RANDOM()",
+                "1"
         );
 
         cursor.moveToFirst();
 
         StringBuilder sbuilder = new StringBuilder();
 
-        for (int i = 0; i < cursor.getCount(); i++) {
-            sbuilder.append(cursor.getString(0));
-            sbuilder.append("");
-            sbuilder.append("\n\n");
-            cursor.moveToNext();
-        }
+        //for (int i = 0; i < cursor.getCount(); i++) {
+        sbuilder.append(cursor.getString(0));
+        sbuilder.append("");
+        sbuilder.append("\n\n");
+        cursor.moveToNext();
+        //}
 
         cursor.close();
 
         textView.setText(sbuilder.toString());
     }
 }
-
-
