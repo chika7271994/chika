@@ -1,6 +1,8 @@
 package com.example.typing;
 
+import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,7 +38,6 @@ public class Practice implements TypingInterface {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                string = editText.getText().toString();
                 if (textView.equals(string)) {
                     text.setText("正解");
                     okCount++;
@@ -55,6 +56,7 @@ public class Practice implements TypingInterface {
         record = (okCount > 4) ? result[0] : result[1];
         //入力タイム(totalTime / 1000 + 秒);
         //改行
-        //プリントrecord
+        //プリントrecord*/
     }
+
 }
