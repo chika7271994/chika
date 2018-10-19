@@ -1,6 +1,8 @@
 package com.example.typing;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -17,12 +19,16 @@ public class MainActivity extends Activity {
     private TestOpenHelper helper;
     private long totalTime;
     private int okCount;
+    private int setCount;
     private String record;
     private EditText editText;
     private TextView answer;
     private TextView total;
+    private TextView question;
     private Button check;
     private Button next;
+    private Button back;
+    AlertDialog mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +50,9 @@ public class MainActivity extends Activity {
         textView = findViewById(R.id.text_view);
         editText = findViewById(R.id.edit_text);
         answer = findViewById(R.id.answer);
-        total = findViewById(R.id.total);
         check = findViewById(R.id.check);
         next = findViewById(R.id.next);
+        onDialog();
 
     }
 
@@ -74,44 +80,78 @@ public class MainActivity extends Activity {
         textView.setText(sbuilder.toString());
     }
 
-    private void toPractice(){
+    public void toPractice(){
 
-        for (int i = 0; i < questionNumber; i++) {
-            doWord();
-        }
+        doWord();
+        /*if (setCount == 10){
+            setContentView(R.layout.result);
             doResult();
+        } */
     }
 
-    private void doWord () {
+    public void doWord () {
         long time = System.currentTimeMillis();
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String string = editText.getText().toString();
-                final String word = textView.getText().toString();
-                next.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (word.equals(string)) {
-                            answer.setText("正解");
-                            okCount++;
-                        } else {
-                            answer.setText("残念");
-                        }
-                    }
-                });
+                mBuilder.show();
             }
         });
         totalTime = totalTime + System.currentTimeMillis() - time;
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setText("");
+                editText.setText("");
+                answer.setText("");
+                setCount++;
+                if (setCount == 10){
+                    setContentView(R.layout.result);
+                    doResult();
+                }
+            }
+        });
     }
 
-    private void doResult() {
-        total.setText("今回の成績は" + record);
-        //今回の成績
-        //正解数(okCount + "/" + questionNumber);
+   private void doResult() {
+        total = findViewById(R.id.total);
+        back = findViewById(R.id.back);
+        total.setText("今回の成績は" + record + "\n\n" + "正解数"+okCount + "/" + questionNumber);
         record = (okCount > 4) ? result[0] : result[1];
         //入力タイム(totalTime / 1000 + 秒);
-        //改行
-        //プリントrecord
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               setContentView(R.layout.activity_main);
+           }
+       });
+
+    }
+
+    private void onDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("これでOK？");
+        //builder.setMessage("OK?");
+        builder.setPositiveButton("OK!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final String string = editText.getText().toString();
+                final String word = textView.getText().toString();
+                if (word.equals(string)) {
+                    answer.setText("正解");
+                    okCount++;
+                } else {
+                    answer.setText("残念");
+                }
+            }
+        });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        mBuilder = builder.create();
     }
 }
